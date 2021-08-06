@@ -1,0 +1,29 @@
+﻿/*******************************************************************************
+ *Copyright(C) 2017 by #CompanyName# 
+ *All rights reserved. 
+ *FileName:    #ScriptName#
+ *Author:       #Author#
+ *Version:      #Version#
+ *UnityVersion：#UnityVersion# 
+ *Date:         #NowTime#
+ *Description:    
+ *History: 
+******************************************************************************/
+
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace #NameSpace#
+{
+    /// <summary>
+    /// 
+    /// </summary>
+	public class #ScriptName# : MonoBehaviour
+	{
+	   public void MInit()
+	   {
+	   }
+	}
+}
+
