@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62f8bfb996086d6439e7461c91e01799, type: 3}
+  m_Script: {fileID: 11500000, guid: 78e06a44bccf64b44b854775bd4502fa, type: 3}
   m_Name: ScriptTemplateConfig
   m_EditorClassIdentifier: 
-  Author: Author
-  CompanyName: LGui
-  NameSpace: LGui.LGame
+  Author: "\u674E\u5FD7\u5174"
+  CompanyName: "\u516B\u70B9"
+  NameSpace: VSFramework
   Version: V1.0

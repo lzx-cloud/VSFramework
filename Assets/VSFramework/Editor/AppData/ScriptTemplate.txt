@@ -1,6 +1,5 @@
 ﻿/*******************************************************************************
  *Copyright(C) 2017 by #CompanyName# 
- *All rights reserved. 
  *FileName:    #ScriptName#
  *Author:       #Author#
  *Version:      #Version#
@@ -21,9 +20,14 @@ namespace #NameSpace#
     /// </summary>
 	public class #ScriptName# : MonoBehaviour
 	{
-	   public void MInit()
+	   public void VSFAwake()
 	   {
 	   }
+
+	   public void VSFStart()
+	   {
+	   }
+
 	}
 }
 

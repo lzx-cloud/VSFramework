@@ -1,5 +1,5 @@
 ﻿/*******************************************************************************
- *Copyright(C) 2017 by 8Point 
+ *Copyright(C) 2017 by 八点 
  *All rights reserved. 
  *FileName:    UILayer
  *Author:       李志兴

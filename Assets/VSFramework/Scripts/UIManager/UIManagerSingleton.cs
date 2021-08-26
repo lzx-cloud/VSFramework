@@ -1,5 +1,5 @@
 ﻿/*******************************************************************************
- *Copyright(C) 2017 by 8Point 
+ *Copyright(C) 2017 by 八点 
  *All rights reserved. 
  *FileName:    UIManagerSingleton
  *Author:       李志兴
@@ -29,9 +29,10 @@ namespace VSFramework
 
         #region 方法
 
-        protected override void Awake()
+        protected override void VSFAwake()
         {
-            base.Awake();
+            base.VSFAwake();
+            Instance = this as T;
         }
 
         #endregion

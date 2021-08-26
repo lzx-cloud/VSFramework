@@ -1,6 +1,5 @@
 ﻿/*******************************************************************************
- *Copyright(C) 2017 by 8Point 
- *All rights reserved. 
+ *Copyright(C) 2017 by 八点
  *FileName:    MsgType
  *Author:       李志兴
  *Version:      V1.0

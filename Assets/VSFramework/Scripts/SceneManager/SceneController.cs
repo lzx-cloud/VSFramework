@@ -1,6 +1,5 @@
 ﻿/*******************************************************************************
- *Copyright(C) 2017 by 8Point 
- *All rights reserved. 
+ *Copyright(C) 2017 by 八点 
  *FileName:    SceneController
  *Author:       李志兴
  *Version:      V1.0
@@ -21,52 +20,61 @@ namespace VSFramework
     /// </summary>
 	public abstract class SceneController : MonoBehaviour
 	{
+
+        #region 字段
+
         /// <summary>
         /// 获取场景类型
         /// </summary>
-        public abstract SceneType sceneType 
+        public abstract SceneType sceneType
         {
             get;
         }
 
-        #region
         #endregion
 
-        #region
-        #endregion
+        #region 内置方法
 
-        #region
-        #endregion
 
         private void Awake()
         {
-            this.VFSAwake();
+            this.VSFAwake();
         }
 
         private void Start()
         {
-            this.VFSStart();
-            StartCoroutine(VFSLoad());
+            this.VSFStart();
+            StartCoroutine(VSFLoad());
         }
 
-        /// <summary>
-        /// 初始化
-        /// </summary>
-        protected virtual void VFSAwake() { }
+        private void OnDestroy() {
+            this.VSFDestory();
+        }
+
+        #endregion
+
+        #region VSF扩展方法
 
         /// <summary>
-        /// 初始化
+        /// 初始化Awake调用
         /// </summary>
-        protected virtual void VFSStart() { }
+        protected virtual void VSFAwake() { }
 
         /// <summary>
-        /// 异步初始化，在VFSStart之后执行
+        /// 初始化Start调用
+        /// </summary>
+        protected virtual void VSFStart() { }
+
+        /// <summary>
+        /// 异步初始化，在VSFStart之后执行
         /// </summary>
         /// <returns></returns>
-        protected abstract IEnumerator VFSLoad();
+        protected abstract IEnumerator VSFLoad();
 
 
-        protected virtual void OnDestroy() { }
+        protected virtual void VSFDestory() { }
+
+        #endregion
 
 	}
 }

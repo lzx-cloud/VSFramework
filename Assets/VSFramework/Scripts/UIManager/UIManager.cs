@@ -1,6 +1,5 @@
 ﻿/*******************************************************************************
- *Copyright(C) 2017 by 8Point 
- *All rights reserved. 
+ *Copyright(C) 2017 by 八点 
  *FileName:    UIManager
  *Author:       李志兴
  *Version:      V1.0
@@ -43,30 +42,46 @@ namespace VSFramework
 
         #endregion
 
-        #region 方法
+        #region 内置方法|私有方法
 
-        protected virtual void Awake()
+        private void Awake() 
+        {
+            this.VSFAwake();
+        }
+
+        private void Start() 
+        {
+            this.VSFStart();
+        }
+
+        #endregion
+
+        #region VSF方法
+
+        /// <summary>
+        /// Awake调用
+        /// </summary>
+        protected virtual void VSFAwake() 
         {
             this._panels.ForEach(bp =>
             {
-                bp.MInit(this);
+                bp.VSFAwake(this);
             });
         }
 
-        protected virtual void Start()
+        /// <summary>
+        /// Start调用
+        /// </summary>
+        protected virtual void VSFStart() 
         {
             this._panels.ForEach(bp =>
             {
-                bp.MStart();
+                bp.VSFStart();
             });
         }
 
-        protected virtual void Update() { }
 
-        protected virtual void OnDestroy() { }
-
-
-        public T GetPanel<T>() where T : BasePanel
+        public T VSFGetPanel<T>() where T : BasePanel
         {
             string typeName = typeof(T).Name;
             BasePanel panel = this._panels.Find(item =>
@@ -88,8 +103,8 @@ namespace VSFramework
                 rt1.offsetMin = rt2.offsetMin;
                 rt1.offsetMax = rt2.offsetMax;  //设置锚点
                 t.name = typeName;
-                t.MInit(this);
-                t.MStart();
+                t.VSFAwake(this);
+                t.VSFStart();
 
                 this._panels.Add(t);
 
@@ -104,7 +119,7 @@ namespace VSFramework
         /// </summary>
         /// <typeparam name="U"></typeparam>
         /// <param name="panel"></param>
-        public void ReleasePanel<T>(T panel) where T : BasePanel
+        public void VSFReleasePanel<T>(T panel) where T : BasePanel
         {
             this._panels.Remove(panel);
         }
@@ -156,6 +171,7 @@ namespace VSFramework
                 BasePanel bp = panels[i];
                 this._panels.Add(bp);
             }
+            this.UpdateLayer();  //更新层级关系
         }
 
 #endif

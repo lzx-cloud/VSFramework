@@ -1,6 +1,5 @@
 ﻿/*******************************************************************************
- *Copyright(C) 2017 by 8Point 
- *All rights reserved. 
+ *Copyright(C) 2017 by 八点
  *FileName:    ToolManager
  *Author:       李志兴
  *Version:      V1.0
@@ -14,11 +13,12 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System;
 
 namespace VSFramework
 {
     /// <summary>
-    /// 
+    /// 工具类
     /// </summary>
 	public class ToolManager : ManagerSingleton<ToolManager>
 	{
@@ -29,18 +29,30 @@ namespace VSFramework
         /// <returns></returns>
         public static List<T> GetAllTypes<T>() where T : class
         {
-
+            bool isAssetScript = typeof(T).IsSubclassOf(typeof(ScriptableObject));
             var types = Assembly.GetExecutingAssembly().GetTypes();
             var typeName = typeof(T).FullName;
             List<T> result = new List<T>();
             foreach (var type in types)
             {
+                if (type.IsAbstract)
+                {  //如果是抽象类则返回
+                    continue;
+                }
                 var baseType = type.BaseType;  //获取基类
                 while (baseType != null)  //获取所有基类
                 {
                     if (baseType.FullName == typeName)
                     {
-                        object obj = Activator.CreateInstance(type);
+                        object obj = null;
+                        if (isAssetScript)
+                        {
+                            obj = ScriptableObject.CreateInstance(type);
+                        }
+                        else
+                        {
+                            obj = Activator.CreateInstance(type);
+                        }
                         if (obj != null)
                         {
                             T info = obj as T;
@@ -74,8 +86,8 @@ namespace VSFramework
                 Type[] tfs = type.GetInterfaces();  //获取该类型的接口
                 foreach (var tf in tfs)
                 {
-                    Debug.Log(tf.FullName + "  " + typeName);
-                    if (tf.FullName == typeName)  //判断全名，是否在一个命名空间下面
+                    //判断全名，是否在一个命名空间下面
+                    if (tf.FullName.Equals(typeName))
                     {
                         object obj = Activator.CreateInstance(type);
                         if (obj != null)

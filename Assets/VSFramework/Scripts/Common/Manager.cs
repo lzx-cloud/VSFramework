@@ -1,6 +1,5 @@
 ﻿/*******************************************************************************
- *Copyright(C) 2017 by 8Point 
- *All rights reserved. 
+ *Copyright(C) 2017 by 八点 
  *FileName:    Manager
  *Author:       李志兴
  *Version:      V1.0
@@ -24,12 +23,12 @@ namespace VSFramework
         /// <summary>
         /// 初始化
         /// </summary>
-        public virtual void VFSAwake() { }
+        public virtual void VSFAwake() { }
 
         /// <summary>
         /// 初始化
         /// </summary>
-        public virtual void VFSStart() { } 
+        public virtual void VSFStart() { } 
 
     }
 }

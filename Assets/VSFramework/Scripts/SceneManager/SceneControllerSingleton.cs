@@ -1,6 +1,5 @@
 ﻿/*******************************************************************************
- *Copyright(C) 2017 by 8Point 
- *All rights reserved. 
+ *Copyright(C) 2017 by 八点
  *FileName:    SceneControllerSingleton
  *Author:       李志兴
  *Version:      V1.0
@@ -26,9 +25,9 @@ namespace VSFramework
         /// </summary>
         public static T Instance;
 
-        protected override void VFSAwake()
+        protected override void VSFAwake()
         {
-            base.VFSAwake();
+            base.VSFAwake();
             Instance = this as T;
         }
 

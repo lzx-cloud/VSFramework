@@ -1,6 +1,5 @@
 ﻿/*******************************************************************************
- *Copyright(C) 2017 by 8Point 
- *All rights reserved. 
+ *Copyright(C) 2017 by 八点 
  *FileName:    VSF
  *Author:       李志兴
  *Version:      V1.0
@@ -22,25 +21,27 @@ namespace VSFramework
 	public class VSF : ManagerSingleton<VSF>
     {
         #region 字段和属性
-        #endregion
-
-        #region 方法
-        #endregion
 
         [SerializeField]
         private List<Manager> _managers = new List<Manager>();
 
+        #endregion
+
+        #region 方法
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        public new static void MInit()
+        public new static void VSFAwake()
         {
             string typeName = typeof(VSF).Name;
             GameObject go = new GameObject(typeName);
-            _instance = go.AddComponent<VSF>();
+            Instance = go.AddComponent<VSF>();
 
+            CreateInstance<AsyncManager>();
+            CreateInstance<ToolManager>();
             CreateInstance<PoolManager>();
             CreateInstance<ExpManager>();
 
-            Instance._managers.ForEach(manager => { manager.MStart(); });
+            Instance._managers.ForEach(manager => { manager.VSFStart(); });
 
             DontDestroyOnLoad(Instance.gameObject);
         }
@@ -55,11 +56,13 @@ namespace VSFramework
             string typeName = typeof(T).Name;
             GameObject go = new GameObject(typeName);
             T t = go.AddComponent<T>();
-            t.MInit();
+            t.VSFAwake();
             t.transform.SetParent(Instance.transform);
             Instance._managers.Add(t);
             return t;
         }
+
+        #endregion
 
     }
 }
