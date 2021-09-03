@@ -18,21 +18,22 @@ namespace VSFramework
     /// <summary>
     /// 操作基类
     /// </summary>
-	public class OpaModel : MonoBehaviour
+	public abstract class OpaModel : MonoBehaviour
 	{
 		#region 字段和属性
 
 		[SerializeField]
-		[Tooltip("操作ID(唯一)")]
+		[PropertyDisplayOnly]
+		[Header("操作ID(唯一)")]
 		protected int _opaID = -1;
 
 		[SerializeField]
-		[Tooltip("初始化是否打开")]
+		[Header("初始化是否打开")]
 		protected bool _initOpen = true;
 
 		[SerializeField]
 		[PropertyDisplayOnly]
-		[Tooltip("存入对象池之后，动态生成的唯一Id")]
+		[Header("存入对象池之后，动态生成的唯一Id")]
 		protected int _uniqueId;
 
 		/// <summary>
@@ -68,11 +69,21 @@ namespace VSFramework
 			}
 		}
 
-		#endregion
+        #endregion
 
-		#region 内置方法
+        #region 内置方法
 
-		protected virtual void OnDestroy()
+        private void Awake()
+        {
+			this.VSFAwake();
+        }
+
+        private void Start()
+        {
+			this.VSFStart();
+        }
+
+        protected virtual void OnDestroy()
 		{
 			this.VSFDestroy();
 		}
@@ -108,15 +119,12 @@ namespace VSFramework
 
 		protected virtual void VSFReset()
 		{
-
+			
 		}
 
 		protected virtual void ResetOpaID(int opaID)
 		{
-			if (this._opaID == -1)
-			{
-				this._opaID = opaID;
-			}
+			this._opaID = opaID;
 		}
 
 		#endregion

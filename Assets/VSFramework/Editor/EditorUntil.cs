@@ -127,11 +127,11 @@ namespace VSFramework
         /// 获取唯一ID
         /// </summary>
         /// <returns></returns>
-        //public static int GetUniqueID()
-        //{
-        //    ProjectConfig config = GetConfig<ProjectConfig>();
-        //    return config.GetUniqueID();
-        //}
+        public static int GetUniqueID()
+        {
+            EditorConfig config = GetConfig<EditorConfig>();
+            return config.GetUniqueID();
+        }
 
         #endregion
 

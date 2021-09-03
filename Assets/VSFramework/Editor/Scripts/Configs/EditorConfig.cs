@@ -24,6 +24,7 @@ namespace VSFramework
         #region 字段和属性
 
         [SerializeField]
+        [PropertyDisplayOnly]
         private int _uniqueID;
 
         /// <summary>

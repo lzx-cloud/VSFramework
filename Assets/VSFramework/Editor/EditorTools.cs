@@ -14,6 +14,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using System;
+using System.Reflection;
 
 namespace VSFramework
 {
@@ -69,6 +70,10 @@ namespace VSFramework
             //handle.ReadExcel();
         }
 
+        #region
+        [MenuItem("Assets/GameObjes/ddd")]
+        #endregion
+
         #endregion
 
         #region 上下文
@@ -76,22 +81,22 @@ namespace VSFramework
         [MenuItem("CONTEXT/OpaModel/ResetOpaID")]
         public static void ResetOpaID(MenuCommand command)
         {
-            //OpaModel opaModel = command.context as OpaModel;
-            //BindingFlags bf = BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly;
-            //Type baseType = opaModel.GetType();
-            //while (baseType != null)
-            //{
-            //    string tt = baseType.Name;
-            //    if (tt == typeof(OpaModel).Name)
-            //    {
-            //        break;
-            //    }
+            OpaModel opaModel = command.context as OpaModel;
+            BindingFlags bf = BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly;
+            Type baseType = opaModel.GetType();
+            while (baseType != null)
+            {
+                string tt = baseType.Name;
+                if (tt == typeof(OpaModel).Name)
+                {
+                    break;
+                }
 
-            //    baseType = baseType.BaseType;
-            //}
-            //MethodInfo minfo = baseType.GetMethod("ResetOpaID", bf);
-            //int opaID = EditorUntil.GetUniqueID();
-            //minfo.Invoke(opaModel, new object[] { opaID });
+                baseType = baseType.BaseType;
+            }
+            MethodInfo minfo = baseType.GetMethod("ResetOpaID", bf);
+            int opaID = EditorUntil.GetUniqueID();
+            minfo.Invoke(opaModel, new object[] { opaID });
         }
 
         #endregion
